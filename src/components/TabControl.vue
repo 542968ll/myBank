@@ -1,4 +1,5 @@
 <template>
+  <!--  :class="bgCol ? 'bg-[#fff]' : ''" -->
   <div class="bg-[#3a3a3a] text-[#fff]">
     <ul class=" flex justify-around items-center">
       <li class="flex flex-col justify-center items-center pt-[10px] pb-[10px]">
@@ -27,7 +28,13 @@
 
 <script setup lang="ts">
 import { ref, reactive, toRefs, onMounted } from 'vue'
-
+const props = defineProps({
+  bgCol: {
+    type: Boolean,
+    default: false
+  }
+})
+const { bgCol } = props
 </script>
 <style scoped lang="scss">
 </style>
