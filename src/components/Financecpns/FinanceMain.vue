@@ -1,4 +1,5 @@
 <template>
+
   <Headers>
     <template #slot1>
       <div class=" flex flex-col justify-center items-center">
@@ -13,7 +14,18 @@
       </div>
     </template>
   </Headers>
-  <TabControl></TabControl>
+
+  <TabControl>
+    <template #tabControlItem>
+      <ul class=" flex justify-around items-center text-[#fff]">
+        <li v-for="item in tabControlItemList" :key="item.detail" class="flex flex-col justify-center items-center pt-[10px] pb-[10px]">
+          <span class="w-[30px] h-[30px] leading-[30px] text-center border-[1px] border-solid border-[#fff] text-[18px] rounded-[50%]">{{ item.main }}</span>
+          <span class="text-[12px] mt-[5px] text-[#a6a6a6]">{{ item.detail }}</span>
+        </li>
+      </ul>
+    </template>
+  </TabControl>
+
   <Banner></Banner>
 
   <!-- 我的关注 -->
@@ -35,27 +47,17 @@
   <ContentItem :circleShow="circle">
     <template #title>
       <span class="w-[27px] h-[27px] bg-[#5b6b73] rounded-[50%] mr-[5px]"></span>
-      <span>活期投资</span>  
+      <span>{{ currentInvestmentList.title }}</span>  
     </template>
     <template #bodyItem>
-      <div class="flex h-[88px]">
+      <div class="flex h-[70px]" v-for="item in currentInvestmentList.list" :key="item.title">
         <div class="flex flex-col justify-center items-center text-[#FC505F] text-[18px] w-[100px]">
-          <span>3.27%</span>
-          <span>上期年化</span>
+          <span>{{ item.percentage }}</span>
+          <span>{{ item.time }}</span>
         </div>
         <div class="flex flex-col w-[245px] justify-center ml-[10px]">
-          <span>日益月鑫7天</span>
-          <span class="text-[14px] text-[#999]">招行明星产品 5万起购 到期资金自动到账</span>
-        </div>
-      </div>
-      <div class="flex">
-        <div class="flex flex-col justify-center items-center text-[#FC505F] text-[18px] w-[100px]">
-          <span>4.13%</span>
-          <span>近1年年化</span>
-        </div>
-        <div class="flex flex-col w-[245px] justify-center ml-[10px]">
-          <span>天添金稳健型</span>
-          <span class="text-[14px] text-[#999]">招行净值类明星理财 探索更高收益</span>
+          <span>{{ item.title }}</span>
+          <span class="text-[14px] text-[#999]">{{ item.description }}</span>
         </div>
       </div>
     </template>
@@ -65,29 +67,21 @@
   <ContentItem :circleShow="circle">
     <template #title>
       <span class="w-[27px] h-[27px] bg-[#5b6b73] rounded-[50%] mr-[5px]"></span>
-      <span>短期投资</span>  
+      <span>{{ shortItemInvestmentList.title }}</span>  
     </template>
     <template #bodyItem>
-      <div class="flex h-[88px]">
+      <div class="flex h-[70px]" v-for="item in shortItemInvestmentList.list" :key="item.title">
         <div class="flex flex-col justify-center items-center text-[#FC505F] text-[18px] w-[100px]">
-          <span>4.18%</span>
-          <span>上期年化</span>
+          <span>{{ item.percentage }}</span>
+          <span>{{ item.time }}</span>
         </div>
         <div class="flex flex-col w-[245px] justify-center ml-[10px]">
-          <span>日益月鑫90天</span>
-          <span class="text-[14px] text-[#999]">招行明星产品 5万起购 到期资金自动到账</span>
+          <span>{{ item.title }}</span>
+          <span class="text-[14px] text-[#999]">{{ item.description }}</span>
         </div>
       </div>
-      <div class="flex">
-        <div class="flex flex-col justify-center items-center text-[#FC505F] text-[18px] w-[100px]">
-          <span>4.08%</span>
-          <span>上期年化</span>
-        </div>
-        <div class="flex flex-col w-[245px] justify-center ml-[10px]">
-          <span>日益月鑫60天</span>
-          <span class="text-[14px] text-[#999]">招行净值类明星理财 探索更高收益</span>
-        </div>
-      </div>
+
+
     </template>
   </ContentItem>
 
@@ -95,27 +89,17 @@
   <ContentItem :circleShow="circle">
     <template #title>
       <span class="w-[27px] h-[27px] bg-[#5b6b73] rounded-[50%] mr-[5px]"></span>
-      <span>长期投资</span>  
+      <span>{{ longItemInvestmentList.title }}</span>  
     </template>
     <template #bodyItem>
-      <div class="flex h-[88px]">
+      <div class="flex h-[70px]" v-for="item in longItemInvestmentList.list" :key="item.title">
         <div class="flex flex-col justify-center items-center text-[#FC505F] text-[18px] w-[100px]">
-          <span>22.98%</span>
-          <span>近1年收益</span>
+          <span>{{ item.percentage }}</span>
+          <span>{{ item.time }}</span>
         </div>
         <div class="flex flex-col w-[245px] justify-center ml-[10px]">
-          <span>创金沪港深</span>
-          <span class="text-[14px] text-[#999]">金牛基金经理管理 积极参与打新</span>
-        </div>
-      </div>
-      <div class="flex">
-        <div class="flex flex-col justify-center items-center text-[#FC505F] text-[18px] w-[100px]">
-          <span>3.62%</span>
-          <span>近1年收益</span>
-        </div>
-        <div class="flex flex-col w-[245px] justify-center ml-[10px]">
-          <span>大摩强债基金</span>
-          <span class="text-[14px] text-[#999]">一级债基 回撤控制好 反弹弹性足</span>
+          <span>{{ item.title }}</span>
+          <span class="text-[14px] text-[#999]">{{ item.description }}</span>
         </div>
       </div>
     </template>
@@ -164,9 +148,45 @@
         <img src="../../assets/img/licaiganhuo.png" class="h-[133px] w-[100%]">
         <span class="absolute bottom-[0] w-[100%] bg-[#101010] text-[#fff] text-[14px] h-[30px] leading-[30px]">公积金“闲着也是闲着”，能取出来理财吗</span>
       </div>
-      <ListItem></ListItem>
-      <ListItem></ListItem>
-      <ListItem></ListItem>
+      <ListItem>
+        <template #itemImg>
+          <img src="@/assets/img/car.png" class="h-[68px] w-[110px] mr-[10px]">
+        </template>
+        <template #itemContent>
+          <span>从小白到达人，理财如何赚更多？</span>
+          <div>
+            <span class="mr-[10px] text-[14px]">招财</span>
+            <span class="text-[14px]">2小时前</span>
+          </div>
+        </template>
+      </ListItem>
+
+      <ListItem>
+        <template #itemImg>
+          <img src="@/assets/img/car.png" class="h-[68px] w-[110px] mr-[10px]">
+        </template>
+        <template #itemContent>
+          <span>从小白到达人，理财如何赚更多？</span>
+          <div>
+            <span class="mr-[10px] text-[14px]">招财</span>
+            <span class="text-[14px]">2小时前</span>
+          </div>
+        </template>
+      </ListItem>
+
+      <ListItem>
+        <template #itemImg>
+          <img src="@/assets/img/car.png" class="h-[68px] w-[110px] mr-[10px]">
+        </template>
+        <template #itemContent>
+          <span>从小白到达人，理财如何赚更多？</span>
+          <div>
+            <span class="mr-[10px] text-[14px]">招财</span>
+            <span class="text-[14px]">2小时前</span>
+          </div>
+        </template>
+      </ListItem>
+
     </template>
 
 
@@ -175,16 +195,30 @@
 </template>
 
 <script setup lang="ts">
-import { ref, reactive, toRefs, onMounted } from 'vue'
+import { ref, onMounted } from 'vue'
 import Headers from '../Headers.vue';
 import TabControl from '../TabControl.vue';
 import Banner from '../Banner.vue';
 import ContentItem from '../ContentItem.vue';
 import WealthExperience from './WealthExperience.vue';
 import ListItem from '../ListItem.vue';
+import { fetchShowFinance } from '../../api/Finance';
+import type { tabControlItemType, bannerListType, investmentType } from '../../types/financeType'
 
 const circle = ref<boolean>(true)
 
+const tabControlItemList = ref<tabControlItemType[]>([])
+const shortItemInvestmentList = ref<investmentType>({} as investmentType)
+const longItemInvestmentList = ref<investmentType>({} as investmentType)
+const currentInvestmentList = ref<investmentType>({} as investmentType)
+
+onMounted(async () => {
+  const res = await fetchShowFinance()
+  tabControlItemList.value = res.tabControlItem
+  shortItemInvestmentList.value = res.shortItemInvestment
+  longItemInvestmentList.value = res.longItemInvestment
+  currentInvestmentList.value = res.currentInvestment
+})
 
 
 </script>
