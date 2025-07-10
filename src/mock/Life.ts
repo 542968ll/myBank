@@ -1,9 +1,42 @@
+// TabControlItem1
+const TabControlItem1 = [{
+  main: "扫",
+  detail: "扫一扫"
+}, {
+  main: "付",
+  detail: "付款"
+}, {
+  main: "票",
+  detail: "票务"
+}, {
+  main: "订",
+  detail: "订单"
+}]
+
+// TabControlItem2
+const TabControlItem2 = [{
+  main: "生",
+  detail: "生活缴费"
+}, {
+  main: "话",
+  detail: "话费流量"
+}, {
+  main: "礼",
+  detail: "热门活动"
+}, {
+  main: "荐",
+  detail: "荐者有份"
+}, {
+  main: "全",
+  detail: "全部"
+}]
+
 // 中间横选模块
 const LifeEntertainment = [{
   title: "饭票",
   description: "代金券5折起",
   imgUrl: "../../assets/img/daily.png",
-  textColor: "#ff8341"
+  textColor: "#ff8341",
 }, {
   title: "影票",
   description: "特惠看大片",
@@ -13,12 +46,12 @@ const LifeEntertainment = [{
   title: "限时特惠",
   description: "爆款限量秒杀",
   imgUrl: "../../assets/img/daily.png",
-  textColor: "#ffbc53"
+  textColor: "#ffbc53",
 }, {
   title: "掌上商城",
   description: "立减8.9元",
   imgUrl: "../../assets/img/daily.png",
-  textColor: "#fc4c5b"
+  textColor: "#fc4c5b",
 }]
 
 // 轮播图模块
@@ -147,6 +180,8 @@ export default {
     return {
       code: 200,
       data: {
+        TabControlItem1,
+        TabControlItem2,
         LifeEntertainment,
         bannerUrl,
         superCheap,

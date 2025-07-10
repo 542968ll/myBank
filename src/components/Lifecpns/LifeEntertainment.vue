@@ -13,11 +13,12 @@
 </template>
 
 <script setup lang="ts">
-import { ref, reactive, toRefs, onMounted } from 'vue'
+/// <reference types="../../../node_modules/.vue-global-types/vue_3.5_0_0_0.d.ts" />
+import type { ref, PropType } from 'vue'
 import type { LifeEntertainmentType } from '../../types/lifeType'
 const props = defineProps({
   LifeEntertainmentList: {
-    type: Array,
+    type: Array as PropType<LifeEntertainmentType[]>,
     default: []
   }
 })

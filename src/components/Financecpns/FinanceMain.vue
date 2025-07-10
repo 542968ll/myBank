@@ -9,8 +9,8 @@
     </template>
     <template #slot2>
       <div class="w-[60%] relative">
-        <input type="text" class="rounded-[15px] h-[25px] w-[100%]">
-        <img src="../../assets/img/search.svg" alt="" class="absolute top-[25%] left-[5%]">
+        <input type="text" class="indent-[12%] rounded-[15px] h-[25px] w-[100%]" @focus="handleFocus" placeholder="30年行庆明星理财">
+        <img src="../../assets/img/search.svg" class="absolute top-[25%] left-[5%]">
       </div>
     </template>
   </Headers>
@@ -203,6 +203,7 @@ import ContentItem from '../ContentItem.vue';
 import WealthExperience from './WealthExperience.vue';
 import ListItem from '../ListItem.vue';
 import { fetchShowFinance } from '../../api/Finance';
+import { useRouter } from 'vue-router';
 import type { tabControlItemType, bannerListType, investmentType } from '../../types/financeType'
 
 const circle = ref<boolean>(true)
@@ -220,7 +221,13 @@ onMounted(async () => {
   currentInvestmentList.value = res.currentInvestment
 })
 
-
+const router = useRouter()
+const handleFocus = () => {
+  router.push('/search')
+}
+ 
 </script>
+
+
 <style scoped lang="scss">
 </style>

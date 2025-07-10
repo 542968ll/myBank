@@ -55,3 +55,8 @@ export type superCheapType = {
   imgUrl: string,
   title: string
 }
+
+export type tabControlItemType = {
+  detail: string,
+  main: string
+}

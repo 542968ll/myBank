@@ -12,55 +12,28 @@
     </template>
   </Headers>
 
+  <!-- tabControlItem1 1 -->
   <TabControl :bgCol="bgCol">
     <template #tabControlItem>
       <ul class=" flex justify-around items-center text-[#929292]">
-        <li class="flex flex-col justify-center items-center pt-[10px] pb-[10px]">
-          <span class="w-[30px] h-[30px] leading-[30px] text-center border-[1px] border-solid border-[#000] text-[18px] rounded-[50%]">扫</span>
-          <span class="text-[12px] mt-[5px]">扫一扫</span>
-        </li>
-        <li class=" flex flex-col justify-center items-center pt-[10px] pb-[10px]">
-          <span class="w-[30px] h-[30px] leading-[30px] text-center border-[1px] border-solid border-[#000] text-[18px] rounded-[50%]">付</span>
-          <span class="text-[12px] mt-[5px]">付款</span>
-        </li>
-        <li class="flex flex-col justify-center items-center pt-[10px] pb-[10px]">
-          <span class="w-[30px] h-[30px] leading-[30px] text-center border-[1px] border-solid border-[#000] text-[18px] rounded-[50%]">票</span>
-          <span class="text-[12px] mt-[5px]">票务</span>
-        </li>
-        <li class="flex flex-col justify-center items-center pt-[10px] pb-[10px]">
-          <span class="w-[30px] h-[30px] leading-[30px] text-center border-[1px] border-solid border-[#000] text-[18px] rounded-[50%]">订</span>
-          <span class="text-[12px] mt-[5px]">订单</span>
+        <li v-for="item in tabControlItem1" :key="item.main" class="flex flex-col justify-center items-center pt-[10px] pb-[10px] hover:text-[#ea5563]">
+          <span class="w-[30px] h-[30px] leading-[30px] text-center border-[1px] border-solid border-[#000] text-[18px] rounded-[50%] hover:border-[#ea5563]">{{ item.main }}</span>
+          <span class="text-[12px] mt-[5px]">{{ item.detail }}</span>
         </li>
       </ul>
     </template>
   </TabControl>
 
-  <!-- 娱乐模块 -->
+  <!-- 娱乐模块 1 -->
   <LifeEntertainment v-if="LifeEntertainmentList.length > 0" :LifeEntertainmentList="LifeEntertainmentList"></LifeEntertainment>
 
-
+  <!-- tabControlItem2 1 -->
   <TabControl :bgCol="bgCol" :mt="mt">
     <template #tabControlItem>
       <ul class=" flex justify-around items-center">
-        <li class="flex flex-col justify-center items-center pt-[10px] pb-[10px]">
-          <span class="w-[30px] h-[30px] leading-[30px] text-center border-[1px] border-solid border-[#2fa099] text-[18px] text-[#2fa099] rounded-[50%]">生</span>
-          <span class="text-[12px] mt-[5px] text-[#a6a6a6]">生活缴费</span>
-        </li>
-        <li class=" flex flex-col justify-center items-center pt-[10px] pb-[10px]">
-          <span class="w-[30px] h-[30px] leading-[30px] text-center border-[1px] border-solid border-[#2fa099] text-[18px] text-[#2fa099] rounded-[50%]">话</span>
-          <span class="text-[12px] mt-[5px] text-[#a6a6a6]">话费流量</span>
-        </li>
-        <li class="flex flex-col justify-center items-center pt-[10px] pb-[10px]">
-          <span class="w-[30px] h-[30px] leading-[30px] text-center border-[1px] border-solid border-[#e97469] text-[18px] text-[#e97469] rounded-[50%]">礼</span>
-          <span class="text-[12px] mt-[5px] text-[#a6a6a6]">热门活动</span>
-        </li>
-        <li class="flex flex-col justify-center items-center pt-[10px] pb-[10px]">
-          <span class="w-[30px] h-[30px] leading-[30px] text-center border-[1px] border-solid border-[#e97469] text-[18px] text-[#e97469] rounded-[50%]">荐</span>
-          <span class="text-[12px] mt-[5px] text-[#a6a6a6]">荐者有份</span>
-        </li>
-        <li class="flex flex-col justify-center items-center pt-[10px] pb-[10px]">
-          <span class="w-[30px] h-[30px] leading-[30px] text-center border-[1px] border-solid border-[#2977b2] text-[18px] text-[#2977b2] rounded-[50%]">全</span>
-          <span class="text-[12px] mt-[5px] text-[#a6a6a6]">全部</span>
+        <li v-for="item in tabControlItem2" :key="item.main" class="flex flex-col justify-center items-center pt-[10px] pb-[10px]">
+          <span class="w-[30px] h-[30px] leading-[30px] text-center border-[1px] border-solid border-[#2fa099] text-[18px] text-[#2fa099] rounded-[50%]">{{ item.main }}</span>
+          <span class="text-[12px] mt-[5px] text-[#a6a6a6]">{{ item.detail }}</span>
         </li>
       </ul>
     </template>
@@ -68,7 +41,7 @@
 
   <Banner></Banner>
 
-  <!-- 超实惠 -->
+  <!-- 超实惠 1 -->
   <ContentItem :flexDir="flexDir">
     <template #title>
       <span>超实惠</span>  
@@ -171,7 +144,8 @@ import type {
   bannerUrlType, 
   recommendListType, 
   superCheapType,
-  moduleType
+  moduleType,
+  tabControlItemType
 } from '../../types/lifeType'
 
 const bgCol = ref<boolean>(true)
@@ -194,6 +168,10 @@ const recommendList = ref<recommendListType[]>([])
 // 超实惠模块
 const superCheapList = ref<superCheapType[]>([])
 
+// TabControlItem
+const tabControlItem1 = ref<tabControlItemType[]>([])
+const tabControlItem2 = ref<tabControlItemType[]>([])
+
 onMounted(async () => {
   try {
     const res = await fetchShowLife()
@@ -203,9 +181,8 @@ onMounted(async () => {
     bannerUrlList.value = res.bannerUrl
     recommendList.value = res.recommendList
     superCheapList.value = res.superCheap
-    // console.log("3333333333", bannerUrlList.value);
-    // console.log("4444444444", recommendList.value);
-    console.log("5555555555", superCheapList.value);
+    tabControlItem1.value = res.TabControlItem1
+    tabControlItem2.value = res.TabControlItem2
   } catch (error) {
     console.log(error);
   }

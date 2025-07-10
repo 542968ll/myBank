@@ -3,7 +3,11 @@
     :class="{
       'bg-[#3a3a3a]': !bgCol, 
       'bg-[#fff]': bgCol,
-      'mt-[10px]': mt
+      'mt-[10px]': mt,
+      'flex': searchStyle,
+      'justify-around': searchStyle,
+      'items-center':searchStyle,
+      'relative': searchStyle
     }"
   >
     <slot name="tabControlItem"></slot>
@@ -20,9 +24,15 @@ const props = defineProps({
   mt: {
     type: Boolean,
     default: false
+  },
+  searchStyle: {
+    type: Boolean,
+    default: false
   }
 })
-const { bgCol } = props
+
+
+const { bgCol, searchStyle } = props
 </script>
 <style scoped lang="scss">
 </style>

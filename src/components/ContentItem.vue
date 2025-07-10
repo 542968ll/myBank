@@ -31,7 +31,6 @@ const props = defineProps({
   }
 })
 const { circleShow } = props
-console.log("aaaaaa", circleShow);
 
 </script>
 <style scoped lang="scss">

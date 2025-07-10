@@ -81,22 +81,21 @@ const longItemInvestment = {
 }
 
 
-export default [
-  {
-    url: '/api/finance',
-    method: 'get',
-    response: () => {
-      return {
-        code: 200,
-        data: {
-          tabControlItem,
-          bannerList,
-          currentInvestment,
-          shortItemInvestment,
-          longItemInvestment
-        },
-        message: '获取成功'
-      }
+
+export default {
+  url: '/api/finance',
+  method: 'get',
+  response: () => {
+    return {
+      code: 200,
+      data: {
+        tabControlItem,
+        bannerList,
+        currentInvestment,
+        shortItemInvestment,
+        longItemInvestment
+      },
+      message: '获取成功'
     }
   }
-]
+}
