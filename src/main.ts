@@ -6,8 +6,14 @@ import router from './routes'
 import "./mock/index"
 import { Swipe, SwipeItem, Search, DropdownMenu, DropdownItem } from 'vant'
 import 'vant/lib/index.css';
+import * as echarts from 'echarts';
 
-createApp(App)
+const app = createApp(App)
+
+
+app.config.globalProperties.$echarts = echarts
+
+app
 .use(router)
 .use(Swipe)
 .use(SwipeItem)

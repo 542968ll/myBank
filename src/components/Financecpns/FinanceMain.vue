@@ -50,7 +50,12 @@
       <span>{{ currentInvestmentList.title }}</span>  
     </template>
     <template #bodyItem>
-      <div class="flex h-[70px]" v-for="item in currentInvestmentList.list" :key="item.title">
+      <div 
+        class="flex h-[70px]" 
+        v-for="item in currentInvestmentList.list" 
+        :key="item.title"
+        @click="productDeatil"
+      >
         <div class="flex flex-col justify-center items-center text-[#FC505F] text-[18px] w-[100px]">
           <span>{{ item.percentage }}</span>
           <span>{{ item.time }}</span>
@@ -213,6 +218,7 @@ const shortItemInvestmentList = ref<investmentType>({} as investmentType)
 const longItemInvestmentList = ref<investmentType>({} as investmentType)
 const currentInvestmentList = ref<investmentType>({} as investmentType)
 
+
 onMounted(async () => {
   const res = await fetchShowFinance()
   tabControlItemList.value = res.tabControlItem
@@ -224,6 +230,10 @@ onMounted(async () => {
 const router = useRouter()
 const handleFocus = () => {
   router.push('/search')
+}
+
+const productDeatil = () => {
+  router.push('/productDetail')
 }
  
 </script>
