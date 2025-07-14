@@ -2,7 +2,3 @@
 @tailwind components;
 @tailwind utilities;
 
-:deep(.van-dropdown-menu__bar) {
-  @apply bg-transparent;
-  @apply shadow-none;
-}

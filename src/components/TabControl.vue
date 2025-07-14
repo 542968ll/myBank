@@ -15,7 +15,6 @@
 </template>
 
 <script setup lang="ts">
-import { ref, reactive, toRefs, onMounted } from 'vue'
 const props = defineProps({
   bgCol: {
     type: Boolean,
@@ -34,5 +33,3 @@ const props = defineProps({
 
 const { bgCol, searchStyle } = props
 </script>
-<style scoped lang="scss">
-</style>

@@ -7,6 +7,7 @@
   "compilerOptions": {
     "noUnusedLocals": false, /* 检查未使用的变量 */
     "noUnusedParameters": false,/* 检查未使用的函数参数 */
+    "forceConsistentCasingInFileNames": false, /* 是否开启ts文件系统大小写敏感 */
     "paths": {
       // "@/*": ["src/*"],
       // "@components/*": ["src/components/*"]

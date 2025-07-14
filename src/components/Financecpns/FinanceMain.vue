@@ -75,7 +75,7 @@
       <span>{{ shortItemInvestmentList.title }}</span>  
     </template>
     <template #bodyItem>
-      <div class="flex h-[70px]" v-for="item in shortItemInvestmentList.list" :key="item.title">
+      <div class="flex h-[70px]" v-for="item in shortItemInvestmentList.list" :key="item.title" @click="productDeatil">
         <div class="flex flex-col justify-center items-center text-[#FC505F] text-[18px] w-[100px]">
           <span>{{ item.percentage }}</span>
           <span>{{ item.time }}</span>
@@ -85,8 +85,6 @@
           <span class="text-[14px] text-[#999]">{{ item.description }}</span>
         </div>
       </div>
-
-
     </template>
   </ContentItem>
 
@@ -97,7 +95,7 @@
       <span>{{ longItemInvestmentList.title }}</span>  
     </template>
     <template #bodyItem>
-      <div class="flex h-[70px]" v-for="item in longItemInvestmentList.list" :key="item.title">
+      <div class="flex h-[70px]" v-for="item in longItemInvestmentList.list" :key="item.title" @click="productDeatil">
         <div class="flex flex-col justify-center items-center text-[#FC505F] text-[18px] w-[100px]">
           <span>{{ item.percentage }}</span>
           <span>{{ item.time }}</span>
@@ -150,12 +148,12 @@
 
     <template #bodyItem>
       <div class="relative flex w-[100%]">
-        <img src="../../assets/img/licaiganhuo.png" class="h-[133px] w-[100%]">
+        <img src="../../assets/img/licaiganhuo.png" class="h-[133px] w-[100%]" alt="">
         <span class="absolute bottom-[0] w-[100%] bg-[#101010] text-[#fff] text-[14px] h-[30px] leading-[30px]">公积金“闲着也是闲着”，能取出来理财吗</span>
       </div>
       <ListItem>
         <template #itemImg>
-          <img src="@/assets/img/car.png" class="h-[68px] w-[110px] mr-[10px]">
+          <img src="@/assets/img/car.png" class="h-[68px] w-[110px] mr-[10px]" alt="">
         </template>
         <template #itemContent>
           <span>从小白到达人，理财如何赚更多？</span>
@@ -168,7 +166,7 @@
 
       <ListItem>
         <template #itemImg>
-          <img src="@/assets/img/car.png" class="h-[68px] w-[110px] mr-[10px]">
+          <img src="@/assets/img/car.png" class="h-[68px] w-[110px] mr-[10px]" alt="">
         </template>
         <template #itemContent>
           <span>从小白到达人，理财如何赚更多？</span>
@@ -181,7 +179,7 @@
 
       <ListItem>
         <template #itemImg>
-          <img src="@/assets/img/car.png" class="h-[68px] w-[110px] mr-[10px]">
+          <img src="@/assets/img/car.png" class="h-[68px] w-[110px] mr-[10px]" alt="">
         </template>
         <template #itemContent>
           <span>从小白到达人，理财如何赚更多？</span>
@@ -205,11 +203,11 @@ import Headers from '../Headers.vue';
 import TabControl from '../TabControl.vue';
 import Banner from '../Banner.vue';
 import ContentItem from '../ContentItem.vue';
-import WealthExperience from './WealthExperience.vue';
+import WealthExperience from '../financeCpns/WealthExperience.vue';
 import ListItem from '../ListItem.vue';
 import { fetchShowFinance } from '../../api/Finance';
 import { useRouter } from 'vue-router';
-import type { tabControlItemType, bannerListType, investmentType } from '../../types/financeType'
+import type { tabControlItemType, investmentType } from '../../types/financeType'
 
 const circle = ref<boolean>(true)
 
@@ -239,5 +237,3 @@ const productDeatil = () => {
 </script>
 
 
-<style scoped lang="scss">
-</style>

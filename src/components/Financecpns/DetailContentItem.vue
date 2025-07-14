@@ -6,7 +6,6 @@
 </template>
 
 <script setup lang="ts">
-import { ref, reactive, toRefs, onMounted } from 'vue'
 defineProps({
   redemption: {
     type: Boolean,
@@ -18,5 +17,3 @@ defineProps({
   }
 })
 </script>
-<style scoped lang="scss">
-</style>

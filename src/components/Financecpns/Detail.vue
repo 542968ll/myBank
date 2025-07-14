@@ -1,28 +1,26 @@
 <template>
   <Headers :detailHeader="detailHeader">
     <template #slot1>
-      <div class="flex justify-center items-center">
-        <img src="@/assets/img/return.svg" class="w-[35px] h-[35px]">
+      <div class="flex justify-center items-center" @click="returnHandle">
+        <img src="@/assets/img/return.svg" class="w-[35px] h-[35px]" alt="">
       </div>
     </template>
     <template #slot2>
-      <span class="w-[60%] text-center">产品详情</span>
+      <span class="w-[60%] text-center" @click="">产品详情</span>
     </template>
   </Headers>
 
+  <Introduction v-if="showIntroduction" :detailData="detailData"></Introduction>
 
-  <Introduction></Introduction>
-
-  <DetailItem></DetailItem>
-
+  <DetailItem v-if="financialCycle" :financialCycle="financialCycle"></DetailItem>
 
   <!-- 产品简述 -->
   <DetailContentItem>
     <template #title>
-      <div class="h-[30px] leading-[30px] text-[#383838] mb-[5px]">产品简述</div>
+      <div class="h-[30px] leading-[30px] text-[#383838] mb-[5px]">{{ productDescription.title }}</div>
     </template>
     <template #content>
-      <div class="text-[14px] text-[#616161] mb-[10px]">短期系统银行理财产品，非保本浮动利益。全行客户，不限卡种；适合能够确定用款期限需求的客户；到期后自动赎回并返回银行账户，不用过多关注或担心错过赎回。</div>
+      <div class="text-[14px] text-[#616161] mb-[10px]">{{ productDescription.description }}</div>
       <div>
         <!-- echarts图 -->
         <div ref="chartDOM" class="w-[338px] h-[220px]"></div>
@@ -34,32 +32,32 @@
   <!-- 买入规则 -->
   <DetailContentItem>
     <template #title>
-      <div class="h-[30px] leading-[30px] text-[#383838] mb-[5px]">买入规则</div>
+      <div class="h-[30px] leading-[30px] text-[#383838] mb-[5px]">{{ buyInRules.title }}</div>
     </template>
     <template #content>
-      <span class="text-[14px] text-[#616161] mb-[10px]">存续期内可在每天的9:30-22:30办理申购。</span>
+      <span class="text-[14px] text-[#616161] mb-[10px]">{{ buyInRules.description }}</span>
     </template>
   </DetailContentItem>
 
   <!-- 收益规则 -->
   <DetailContentItem>
     <template #title>
-      <div class="h-[30px] leading-[30px] text-[#383838] mb-[5px]">收益规则</div>
+      <div class="h-[30px] leading-[30px] text-[#383838] mb-[5px]">{{ earningsRules.title }}</div>
     </template>
     <template #content>
-      <span class="text-[14px] text-[#616161] mb-[10px]">理财计划存续期每天9:30-22:30申购下一个工作日起息。每工作日9:30前公布当日到期产品自动赎回的持有期年化收益率。</span>
+      <span class="text-[14px] text-[#616161] mb-[10px]">{{ earningsRules.description }}</span>
     </template>
   </DetailContentItem>
 
   <!-- 赎回规则 -->
   <DetailContentItem :redemption="redemption">
     <template #title>
-      <div class="h-[30px] leading-[30px] text-[#383838] mb-[5px]">赎回规则</div>
+      <div class="h-[30px] leading-[30px] text-[#383838] mb-[5px]">{{ redemptionRules.title }}</div>
     </template>
     <template #content>
       <div class="flex">
-        <div class="text-[#979797] w-[70px]">普通赎回</div>
-        <div class="text-[14px] text-[#616161] mb-[10px]">每个理财计划到期后本金自动赎回到张，本金和分红将在到期日后3个工作日内返回。</div>
+        <div class="text-[#979797] w-[50%]">{{ redemptionRules.descriptTitle }}</div>
+        <div class="text-[14px] text-[#616161]">{{ redemptionRules.description }}</div>
       </div>
     </template>
   </DetailContentItem>
@@ -67,30 +65,48 @@
   <!-- 风险评级 -->
   <DetailContentItem :riskStyle="riskStyle">
     <template #title>
-      <div class="h-[30px] leading-[30px] text-[#383838] mb-[5px]">风险评级</div>
+      <div class="h-[30px] leading-[30px] text-[#383838] mb-[5px]">{{ riskRating.title }}</div>
     </template>
     <template #content>
-      <div class="text-[14px] text-[#616161]">R2级(较低风险)</div>
-      <div class="text-[14px] text-[#616161] mb-[10px]">稳健型，本金风险相对较小，收益浮动相对可控。</div>
+      <div class="text-[14px] text-[#616161]">{{ riskRating.descriptTitle }}</div>
+      <div class="text-[14px] text-[#616161] mb-[10px]">{{ riskRating.description }}</div>
     </template>
   </DetailContentItem>
 
-
   <!-- 产品介绍 & 产品公告 -->
-  <ProductItem :mt="mt"></ProductItem>
-  <ProductItem></ProductItem>
+  <ProductItem :mt="mt">
+    <template #title>
+      <span>产品介绍</span>
+    </template>
+  </ProductItem>
+  <ProductItem>
+    <template #title>
+      <span>产品公告</span>
+    </template>
+  </ProductItem>
+
+
+  <!-- 底部按钮 -->
+  <div class="mt-[30px] h-[50px] flex justify-center items-center text-center">
+    <div class="w-[60px] h-[100%] bg-[#fff]"></div>
+    <div class="w-[100%] bg-[#0074d9] text-[#fff] h-[100%] leading-[50px]">购买</div>
+  </div>
 
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref, onBeforeUnmount } from 'vue'
+import { onMounted, ref, onBeforeUnmount, computed } from 'vue'
+import { useRouter } from 'vue-router'
 import Headers from '../Headers.vue';
-import Introduction from './Introduction.vue';
-import DetailItem from './DetailItem.vue';
-import DetailContentItem from './DetailContentItem.vue';
-import ProductItem from './ProductItem.vue';
+import DetailItem from '../financeCpns/DetailItem.vue';
+import DetailContentItem from '../financeCpns/DetailContentItem.vue';
+import ProductItem from '../financeCpns/ProductItem.vue';
 
 import * as echarts from 'echarts';
+import Introduction from "../financeCpns/Introduction.vue";
+
+import { fetchFinanceDetail } from "../../api/Finance"
+import type { detailData, financialCycleType, rulesType } from "../../types/detail"
 
 
 
@@ -99,6 +115,14 @@ const detailHeader = ref<boolean>(true)
 const redemption = ref<boolean>(true)
 const riskStyle = ref<boolean>(true)
 const mt = ref<boolean>(true)
+
+const buyInRules = ref<rulesType>({} as rulesType)
+const earningsRules = ref<rulesType>({} as rulesType)
+const productDescription = ref<rulesType>({} as rulesType)
+const redemptionRules = ref<rulesType>({} as rulesType)
+const riskRating = ref<rulesType>({} as rulesType)
+const detailData = ref<detailData>({} as detailData)
+const financialCycle = ref<financialCycleType[]>([])
 
 // 获取DOM引用
 const chartDOM = ref(null)
@@ -134,12 +158,36 @@ const initChart = () => {
   chartInstance.setOption(option)
 }
 
-
-onMounted(() => {
+// onMounted
+onMounted(async () => {
   initChart()
   window.addEventListener('resize', () => chartInstance?.resize())
+
+  const res = await fetchFinanceDetail()
+  detailData.value = res.detailData
+  console.log("detailData", detailData.value);
+  
+  buyInRules.value = res.buyInRules
+  earningsRules.value = res.earningsRules
+  productDescription.value = res.productDescription
+  redemptionRules.value = res.redemptionRules
+  riskRating.value = res.riskRating
+  financialCycle.value = res.financialCycle
 })
 
+
+// 计算属性
+const showIntroduction = computed(() => {
+  return Object.prototype.toString.call(detailData).slice(8, -1) !== '{}'
+})
+
+
+const router = useRouter()
+const returnHandle = () => {
+  router.go(-1)
+}
+
+// onBeforeUnmount
 onBeforeUnmount(() => {
   window.removeEventListener('resize', () => chartInstance?.resize())
   chartInstance?.dispose()
@@ -147,5 +195,3 @@ onBeforeUnmount(() => {
 
 
 </script>
-<style scoped lang="scss">
-</style>

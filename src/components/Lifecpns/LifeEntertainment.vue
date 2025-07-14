@@ -6,7 +6,7 @@
           <span :class="`text-[${item.textColor}]`">{{ item.title}}</span>
           <span class="text-[12px] text-[#a3a3a3]">{{item.description}}</span>
         </div>
-        <img :src="getImg(item.imgUrl)" class="w-[60px] h-[60px] rounded-[50%]">
+        <img :src="getImg(item.imgUrl)" class="w-[60px] h-[60px] rounded-[50%]" alt="">
       </li>
     </ul>
   </div>
@@ -14,7 +14,7 @@
 
 <script setup lang="ts">
 /// <reference types="../../../node_modules/.vue-global-types/vue_3.5_0_0_0.d.ts" />
-import type { ref, PropType } from 'vue'
+import type { PropType } from 'vue'
 import type { LifeEntertainmentType } from '../../types/lifeType'
 const props = defineProps({
   LifeEntertainmentList: {
@@ -30,5 +30,3 @@ const getImg = (img: string) => {
 
 
 </script>
-<style scoped lang="scss">
-</style>

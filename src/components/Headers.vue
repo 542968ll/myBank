@@ -6,13 +6,13 @@
       <img v-if="!detailHeader" src="../assets/img/message.svg" alt="" class="h-[30px] w-[30px]">
       <img v-else src="../assets/img/more.svg" alt="" class="h-[45px] w-[45px]">
       <span class="absolute top-[0] right-[5%] text-[#f00] w-[auto] rounded-[50%] bg-[#fff]">6</span>
-      <span v-if="!detailHeader" class="text-[12px]">消息</span>
+      <span v-if="!detailHeader" class="text-[12px]" @click="messageHandle">消息</span>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref, reactive, toRefs, onMounted } from 'vue'
+import { useRouter } from "vue-router"
 defineProps({
   detailHeader: {
     type: Boolean,
@@ -20,6 +20,9 @@ defineProps({
   }
 })
 
+const router = useRouter()
+const messageHandle = () => {
+  router.push('/Message')
+}
+
 </script>
-<style scoped lang="scss">
-</style>

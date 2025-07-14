@@ -4,7 +4,7 @@
       <div class="flex-[1]" :class="circleShow ? 'flex' : ''">
         <slot name="title"></slot>
       </div>
-      <img src="../assets/img/arrow.svg" :class="superCheap ? 'hidden' : ''">
+      <img src="../assets/img/arrow.svg" :class="superCheap ? 'hidden' : ''" alt="">
     </div>
     <div class="flex items-center p-[10px]" 
       :class="{'flex-row': flexDir, 'flex-col': !flexDir, 'justify-center': !flexDir, 'justify-around': flexDir }"
@@ -15,7 +15,6 @@
 </template>
 
 <script setup lang="ts">
-import { ref, reactive, toRefs, onMounted } from 'vue'
 const props = defineProps({
   circleShow: {
     type: Boolean,
@@ -33,5 +32,3 @@ const props = defineProps({
 const { circleShow } = props
 
 </script>
-<style scoped lang="scss">
-</style>

@@ -9,7 +9,6 @@
 </template>
 
 <script setup lang="ts">
-import { ref, reactive, toRefs, onMounted } from 'vue'
 defineProps({
   lifeItem: {
     type: Boolean,
@@ -19,5 +18,3 @@ defineProps({
 
 
 </script>
-<style scoped lang="scss">
-</style>

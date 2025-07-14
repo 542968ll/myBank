@@ -1,22 +1,28 @@
 <template>
   <div 
-    class="flex p-[10px] h-[30px] justify-between items-center bg-[#fff]" 
+    class="flex p-[10px] h-[30px] justify-between items-center bg-[#fff] border-b-[1px] border-b-[#f0f0f2]" 
     :class="{'mt-[10px]': mt}"
   >
-    <span>产品公告</span>
-    <img src="@/assets/img/youjiantou.svg" class="h-[30px] w-[30px]">
+    <slot name="title"></slot>
+    <img v-if="!showRightArrow" src="@/assets/img/youjiantou.svg" class="h-[30px] w-[30px]" alt="">
+    <span v-else class="text-[#5b6b73]">{{ time }}</span>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref, reactive, toRefs, onMounted } from 'vue'
 defineProps({
   mt: {
     type: Boolean,
     default: false
+  },
+  showRightArrow: {
+    type: Boolean,
+    default: false
+  },
+  time: {
+    type: String,
+    default: ''
   }
 })
 
 </script>
-<style scoped lang="scss">
-</style>

@@ -3,7 +3,7 @@
   <Headers>
     <template #slot1>
       <div class="flex justify-center items-center">
-        <img src="@/assets/img/address.svg" class="w-[30px] h-[30px]">
+        <img src="@/assets/img/address.svg" class="w-[30px] h-[30px]" alt="">
         <span>杭州</span>
       </div>
     </template>
@@ -53,7 +53,7 @@
           <span class="text-[#767676]">{{ item.title }}</span>
           <span class="text-[12px] text-[#fd7d87]">{{ item.description }}</span>
         </div>
-        <img :src="getImg(item.imgUrl)" class="w-[95px] h-[95px]">
+        <img :src="getImg(item.imgUrl)" class="w-[95px] h-[95px]" alt="">
       </div>
 
     </template>
@@ -112,7 +112,7 @@
     <template #bodyItem>
       <ListItem :lifeItem="lifeItem" v-for="item in recommendList" :key="item.id">
         <template #itemImg>
-          <img :src="getImg(item.imgUrl)" class="h-[100px] w-[100px] mr-[10px]">
+          <img :src="getImg(item.imgUrl)" class="h-[100px] w-[100px] mr-[10px]" alt="">
         </template>
         <template #itemContent>
           <div class="flex flex-col">
@@ -134,7 +134,7 @@
 import { ref, onMounted } from 'vue'
 import Headers from '../Headers.vue';
 import TabControl from '../TabControl.vue';
-import LifeEntertainment from './LifeEntertainment.vue';
+import LifeEntertainment from '../lifeCpns/LifeEntertainment.vue';
 import Banner from '../Banner.vue';
 import ContentItem from '../ContentItem.vue';
 import ListItem from '../ListItem.vue';
@@ -194,5 +194,3 @@ const getImg = (img: string) => {
 
 
 </script>
-<style scoped lang="scss">
-</style>
