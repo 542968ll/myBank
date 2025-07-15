@@ -1,19 +1,24 @@
 import { createWebHistory, createRouter } from 'vue-router'
 
-import FinanceMain from '../components/Financecpns/FinanceMain.vue'
+import FinanceMain from '../components/financeCpns/FinanceMain.vue'
 import LifeMain from '../components/lifeCpns/LifeMain.vue'
 import Search from '../components/financeCpns/Search.vue'
 import Detail from '../components/financeCpns/Detail.vue'
 import Message from '../components/Message.vue'
+import Login from '../components/Login.vue'
+import FinancialInformation from '../components/financeCpns/FinancialInformation.vue'
+
 
 
 const routes = [
-  { path: '/', component:  FinanceMain},
+  { path: '/', component:  Login},
   { path: '/financeMain', component:  FinanceMain},
   { path: '/lifeMain', component:  LifeMain},
   { path: '/search', component:  Search},
   { path: '/productDetail', component: Detail},
-  { path: '/Message', component: Message},
+  { path: '/message', component: Message},
+  { path: '/login', component: Login},
+  { path: '/financialInformation', component: FinancialInformation},
 ]
 
 const router = createRouter({

@@ -5,7 +5,7 @@
     <div class="flex flex-col justify-center items-center relative">
       <img v-if="!detailHeader" src="../assets/img/message.svg" alt="" class="h-[30px] w-[30px]">
       <img v-else src="../assets/img/more.svg" alt="" class="h-[45px] w-[45px]">
-      <span class="absolute top-[0] right-[5%] text-[#f00] w-[auto] rounded-[50%] bg-[#fff]">6</span>
+      <span v-if="!messageCount" class="absolute top-[0] right-[5%] text-[#f00] w-[auto] rounded-[50%] bg-[#fff]">6</span>
       <span v-if="!detailHeader" class="text-[12px]" @click="messageHandle">消息</span>
     </div>
   </div>
@@ -17,12 +17,16 @@ defineProps({
   detailHeader: {
     type: Boolean,
     default: false
+  },
+  messageCount: {
+    type: Boolean,
+    default: false
   }
 })
 
 const router = useRouter()
 const messageHandle = () => {
-  router.push('/Message')
+  router.push('/message')
 }
 
 </script>

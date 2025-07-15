@@ -9,6 +9,7 @@
         <van-dropdown-item
           v-model="value1" 
           :options="option1"
+          @change="valueChange"
         />
       </van-dropdown-menu>
     </template>
@@ -72,6 +73,8 @@ const option1 = [
 ];
 
 
+const router = useRouter()
+
 onMounted(async () => {
   try {
     const res = await fetchSearchItem()
@@ -82,12 +85,23 @@ onMounted(async () => {
    }
 })
 
+
+// 下拉框改变
+const valueChange = (e: number) => {
+  console.log("eeeeeeeeee", e);
+  if(e === 3) {
+    router.push('/FinancialInformation')
+  }
+}
+
+
+
 const showSearch = computed(() => {
   return Object.prototype.toString.call(searchItem).slice(8, -1) !== '{}'
 })
 
 
-const router = useRouter()
+
 const cancelHandle = () => {
   router.go(-1)
 }

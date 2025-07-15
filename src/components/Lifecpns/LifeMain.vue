@@ -1,4 +1,5 @@
 <template>
+  <button @click="toFinancePage">跳转到理财页面</button>
   <!-- 导航 -->
   <Headers>
     <template #slot1>
@@ -139,6 +140,7 @@ import Banner from '../Banner.vue';
 import ContentItem from '../ContentItem.vue';
 import ListItem from '../ListItem.vue';
 import { fetchShowLife } from '../../api/Life'
+import { useRouter } from 'vue-router';
 import type { 
   LifeEntertainmentType,
   bannerUrlType, 
@@ -190,6 +192,11 @@ onMounted(async () => {
 
 const getImg = (img: string) => {
  return new URL(img, import.meta.url).href
+}
+
+const router = useRouter()
+const toFinancePage = () => {
+  router.push('/financeMain')
 }
 
 

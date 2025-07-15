@@ -4,7 +4,7 @@ import './assets/css/reset.css'
 import App from './App.vue'
 import router from './routes'
 import "./mock/index"
-import { Swipe, SwipeItem, Search, DropdownMenu, DropdownItem } from 'vant'
+import { Swipe, SwipeItem, Search, DropdownMenu, DropdownItem, Popup } from 'vant'
 import 'vant/lib/index.css';
 import * as echarts from 'echarts';
 
@@ -20,4 +20,5 @@ app
 .use(Search)
 .use(DropdownMenu)
 .use(DropdownItem)
+.use(Popup)
 .mount('#app')
