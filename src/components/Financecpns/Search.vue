@@ -44,7 +44,6 @@
           <div class="absolute top-[1px] left-[1px] h-[0px] w-[0px] border-[5px] border-t-[#F6514B] border-l-[#F6514B] border-r-transparent border-b-transparent"></div>
         </li>
       </ul>
-      
     </template>
   </SearchContent>
 

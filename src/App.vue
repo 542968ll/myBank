@@ -4,12 +4,14 @@
     :class='{
       "bg-[#6d6d6d]": showBG,
       "bg-[#efefef]": !showBG,
-      "bg-[#fff]": showBGfff
+      "bg-[#fff]": showBGfff,
     }'
   >
     <!-- <button @click="toFinancePage">跳转到理财页面</button>
     <button @click="toLifePage">跳转到生活页面</button> -->
-    <router-view :key="$route.fullPath"></router-view>
+    <!-- <router-view :key="$route.fullPath"></router-view> -->
+    <!-- <Home></Home> -->
+    <MyMain></MyMain>
   </div>
 
   <!-- <Login></Login> -->
@@ -22,6 +24,8 @@
 import { computed } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import Login from './components/Login.vue';
+import Home from './components/Home.vue';
+import MyMain from './components/My/MyMain.vue';
 
 
 const route = useRoute()

@@ -7,14 +7,17 @@ import "./mock/index"
 import { Swipe, SwipeItem, Search, DropdownMenu, DropdownItem, Popup } from 'vant'
 import 'vant/lib/index.css';
 import * as echarts from 'echarts';
+import { createPinia } from 'pinia'
 
 const app = createApp(App)
+const pinia = createPinia()
 
 
 app.config.globalProperties.$echarts = echarts
 
 app
 .use(router)
+.use(pinia)
 .use(Swipe)
 .use(SwipeItem)
 .use(Search)

@@ -2,12 +2,12 @@
   <div
     :class="{
       'bg-[#3a3a3a]': !bgCol, 
-      'bg-[#fff]': bgCol,
-      'mt-[10px]': mt,
+      'bg-[#fff]': bgCol || homeBG || myBG,
+      'mt-[10px]': mt || myBG,
       'flex': searchStyle,
       'justify-around': searchStyle,
       'items-center':searchStyle,
-      'relative': searchStyle
+      'relative': searchStyle,
     }"
   >
     <slot name="tabControlItem"></slot>
@@ -25,6 +25,14 @@ const props = defineProps({
     default: false
   },
   searchStyle: {
+    type: Boolean,
+    default: false
+  },
+  homeBG: {
+    type: Boolean,
+    default: false
+  },
+  myBG: {
     type: Boolean,
     default: false
   }

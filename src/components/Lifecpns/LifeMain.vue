@@ -150,6 +150,15 @@ import type {
   tabControlItemType
 } from '../../types/lifeType'
 
+import { useLifeStore } from '../../store/Life'
+
+// 使用pinia仓库
+let lifeStore = useLifeStore()
+
+console.log('useStore', lifeStore.lifePageData());
+
+
+
 const bgCol = ref<boolean>(true)
 const mt = ref<boolean>(true)
 const flexDir = ref<boolean>(true)
