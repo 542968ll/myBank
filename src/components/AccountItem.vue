@@ -1,7 +1,6 @@
 <template>
-  <div class="h-[160px] flex p-[15px] flex-col bg-[#fff] mt-[10px]">
+  <div class="h-[160px] flex p-[15px] flex-col bg-[#fff] mt-[10px] justify-between">
     <slot name="accoumtItemTitle"></slot>
-    
     <div class="flex flex-col ml-[60px] ">
       <slot name="accountItemContent"></slot>
     </div>

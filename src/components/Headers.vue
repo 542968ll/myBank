@@ -1,18 +1,20 @@
 <template>
   <div 
-    class="flex justify-around items-center bg-[#3a3a3a] text-[#fff] pt-[10px] pb-[10px]"
+    class="flex items-center bg-[#3a3a3a] text-[#fff] pt-[10px] pb-[10px]"
     :class="{
       'bg-[#3a3a3a]': !myBG,
       'bg-[#cf0000]': myBG,
+      'justify-around': !setting,
+      'justyify-between': setting
     }"
   >
     <slot name="slot1"></slot>
     <slot name="slot2"></slot>
     <div class="flex flex-col justify-center items-center relative z-1">
-      <img v-if="!detailHeader" src="../assets/img/message.svg" alt="" class="h-[30px] w-[30px]">
+      <img v-if="!detailHeader && !setting" src="../assets/img/message.svg" alt="" class="h-[30px] w-[30px]">
       <img v-else src="../assets/img/more.svg" alt="" class="h-[45px] w-[45px]">
       <span v-if="!messageCount" class="absolute top-[0] right-[5%] text-[#f00] w-[auto] rounded-[50%] bg-[#fff]">6</span>
-      <span v-if="!detailHeader" class="text-[12px]" @click="messageHandle">消息</span>
+      <span v-if="!detailHeader && !setting" class="text-[12px]" @click="messageHandle">消息</span>
     </div>
   </div>
   <img v-if="homeBG" src="@/assets/img/homeBanner.png" alt="" class="top-[0] left-[0] h-[auto] w-[100%] mt-[-66px]">
@@ -24,7 +26,7 @@
         <span class="text-[12px]">欢迎您，晚上好</span>
       </div>
     </div>
-    <div class="mr-[15px]">设置</div>
+    <div class="mr-[15px]" @click="settingHandle">设置</div>
   </div>
 </template>
 
@@ -46,6 +48,10 @@ defineProps({
   myBG: {
     type: Boolean,
     default: false
+  },
+  setting: {
+    type: Boolean,
+    default: false
   }
 })
 
@@ -53,5 +59,11 @@ const router = useRouter()
 const messageHandle = () => {
   router.push('/message')
 }
+
+const settingHandle = () => {
+  router.push('/setting')
+}
+
+
 
 </script>

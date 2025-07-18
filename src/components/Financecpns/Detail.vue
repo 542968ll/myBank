@@ -100,7 +100,7 @@ import { useRouter } from 'vue-router'
 import Headers from '../Headers.vue';
 import DetailItem from '../financeCpns/DetailItem.vue';
 import DetailContentItem from '../financeCpns/DetailContentItem.vue';
-import ProductItem from '../financeCpns/ProductItem.vue';
+import ProductItem from '../ProductItem.vue';
 
 import * as echarts from 'echarts';
 import Introduction from "../financeCpns/Introduction.vue";

@@ -16,19 +16,24 @@ const TabControlItem1 = [{
 // TabControlItem2
 const TabControlItem2 = [{
   main: "生",
-  detail: "生活缴费"
+  detail: "生活缴费",
+  textColor: "#58aaa6"
 }, {
   main: "话",
-  detail: "话费流量"
+  detail: "话费流量",
+  textColor: "#43a09a"
 }, {
   main: "礼",
-  detail: "热门活动"
+  detail: "热门活动",
+  textColor: "#e28076"
 }, {
   main: "荐",
-  detail: "荐者有份"
+  detail: "荐者有份",
+  textColor: "#dc685c"
 }, {
   main: "全",
-  detail: "全部"
+  detail: "全部",
+  textColor: "#2b7ebf"
 }]
 
 // 中间横选模块

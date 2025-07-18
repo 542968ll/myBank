@@ -17,7 +17,7 @@
   <TabControl :homeBG="homeBG">
     <template #tabControlItem>
       <ul class="flex justify-around items-center flex-wrap">
-        <li v-for="item in tabControlItemList" :key="item.detail" class="flex flex-col justify-center items-center pt-[10px] pb-[10px] h-[60px] w-[75px]">
+        <li v-for="item in tabControlItemList1" @click="financeItem(item)" :key="item.detail" class="flex flex-col justify-center items-center pt-[10px] pb-[10px] h-[60px] w-[75px]">
           <span 
             class="w-[30px] h-[30px] leading-[30px] text-center text-[18px] rounded-[50%] border-[1px] border-solid"
             :style="{color: item.textColor}"  
@@ -127,7 +127,7 @@
   <ContentItem>
     <template #title>
       <span class="w-[27px] h-[27px] bg-[#5b6b73] rounded-[50%] mr-[5px]"></span>
-      <span>理财干货</span>  
+      <span>理财参考</span>  
     </template>
 
     <template #bodyItem>
@@ -184,16 +184,16 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
-import Headers from './Headers.vue';
-import TabControl from './TabControl.vue';
-import ContentItem from './ContentItem.vue';
-import ScrollBar from './ScrollBar.vue';
-import ListItem from './ListItem.vue';
+import Headers from '../Headers.vue';
+import TabControl from '../TabControl.vue';
+import ContentItem from '../ContentItem.vue';
+import ScrollBar from '../ScrollBar.vue';
+import ListItem from '../ListItem.vue';
 import HomeBottomContent from './HomeBottomContent.vue';
-import type { investmentType } from '../types/financeType'
-import type { homeBottomContentListType, tabControlItemListType, scrollBarType } from '../types/homeType'
-import { useFinanceStore } from '../store/Finance'
-import { useHomeStore } from '../store/Home';
+import type { investmentType } from '../../types/financeType'
+import type { homeBottomContentListType, tabControlItemListType, scrollBarType } from '../../types/homeType'
+import { useFinanceStore } from '../../store/Finance'
+import { useHomeStore } from '../../store/Home';
 
 const homeBG = ref<boolean>(true)
 const recommand = ref<boolean>(true)
@@ -214,7 +214,6 @@ onMounted(async () => {
   await financeStore.financePageData()
   const { currentInvestmentList } = financeStore.$state
   recommandList.value = currentInvestmentList
-  console.log("recommand", recommandList.value);
   
   // 请求首页数据
   await homeStore.homePageData()
@@ -228,6 +227,15 @@ onMounted(async () => {
 const router = useRouter()
 const productDeatil = () => {
   router.push('/productDetail')
+}
+
+const handleFocus = () => {
+  router.push('/search')
+}
+
+const financeItem = (item: tabControlItemListType) => {
+  if(item.detail !== '账户') return
+  router.push('/accountOverview')
 }
 
 </script>

@@ -1,5 +1,4 @@
 <template>
-  <button @click="toFinancePage">跳转到理财页面</button>
   <!-- 导航 -->
   <Headers>
     <template #slot1>
@@ -33,7 +32,10 @@
     <template #tabControlItem>
       <ul class=" flex justify-around items-center">
         <li v-for="item in tabControlItem2" :key="item.main" class="flex flex-col justify-center items-center pt-[10px] pb-[10px]">
-          <span class="w-[30px] h-[30px] leading-[30px] text-center border-[1px] border-solid border-[#2fa099] text-[18px] text-[#2fa099] rounded-[50%]">{{ item.main }}</span>
+          <span 
+            class="w-[30px] h-[30px] leading-[30px] text-center border-[1px] border-solid text-[18px] text-[#2fa099] rounded-[50%]"
+            :style="{color: item.textColor}"  
+          >{{ item.main }}</span>
           <span class="text-[12px] mt-[5px] text-[#a6a6a6]">{{ item.detail }}</span>
         </li>
       </ul>
@@ -194,6 +196,8 @@ onMounted(async () => {
     superCheapList.value = res.superCheap
     tabControlItem1.value = res.TabControlItem1
     tabControlItem2.value = res.TabControlItem2
+    console.log("tabControlItem2", tabControlItem2.value);
+    
   } catch (error) {
     console.log(error);
   }

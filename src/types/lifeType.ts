@@ -1,6 +1,6 @@
 export interface lifeDataType {
-  TabControlItem1: tabControlItemType[] | { detail: string; main: string; }[];
-  TabControlItem2: tabControlItemType[] | { detail: string; main: string }[]
+  TabControlItem1: tabControlItemType[]
+  TabControlItem2: tabControlItemType[]
   LifeEntertainment: LifeEntertainmentType[],
   ListItemCheapModule: ListItemCheapModuleType,
   bannerUrl: bannerUrlType[],
@@ -60,5 +60,6 @@ export type superCheapType = {
 
 export type tabControlItemType = {
   detail: string,
-  main: string
+  main: string,
+  textColor?: string
 }

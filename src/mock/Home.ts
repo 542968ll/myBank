@@ -97,19 +97,19 @@ const financeTheme = [{
 
 // 首页底部  <!-- 首页底部  推荐内容~ -->
 const homeBottomContentList = [{
-  imgUrl: '../assets/img/caijingPic.png',
+  imgUrl: '../../assets/img/caijingPic.png',
   title: '美食',
   description: '代金券5折起'
 }, {
-  imgUrl: '../assets/img/caijingPic.png',
+  imgUrl: '../../assets/img/caijingPic.png',
   title: '影票',
   description: '特惠看大片'
 }, {
-  imgUrl: '../assets/img/caijingPic.png',
+  imgUrl: '../../assets/img/caijingPic.png',
   title: '限时特惠',
   description: '周三一起Buy'
 }, {
-  imgUrl: '../assets/img/caijingPic.png',
+  imgUrl: '../../assets/img/caijingPic.png',
   title: '商城',
   description: '新户立减8.9元'
 }]

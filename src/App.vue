@@ -5,27 +5,17 @@
       "bg-[#6d6d6d]": showBG,
       "bg-[#efefef]": !showBG,
       "bg-[#fff]": showBGfff,
+      
     }'
   >
-    <!-- <button @click="toFinancePage">跳转到理财页面</button>
-    <button @click="toLifePage">跳转到生活页面</button> -->
-    <!-- <router-view :key="$route.fullPath"></router-view> -->
-    <!-- <Home></Home> -->
-    <MyMain></MyMain>
+    <router-view></router-view>
   </div>
-
-  <!-- <Login></Login> -->
-
-
-
 </template>
 
 <script setup lang="ts">
 import { computed } from 'vue';
-import { useRoute, useRouter } from 'vue-router';
-import Login from './components/Login.vue';
-import Home from './components/Home.vue';
-import MyMain from './components/My/MyMain.vue';
+import { useRoute } from 'vue-router';
+
 
 
 const route = useRoute()
@@ -39,16 +29,6 @@ const showBGfff = computed(() => {
   return (route.path === '/' || route.path === '/login')
 })
 
-const router = useRouter()
-const toFinancePage = () => {
-  router.push('/financeMain')
-}
-
-const toLifePage = () => {
-  router.push('/lifeMain')
-}
 
 
 </script>
-<style scoped lang="scss">
-</style>

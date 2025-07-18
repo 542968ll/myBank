@@ -7,9 +7,10 @@ import Detail from '../components/financeCpns/Detail.vue'
 import Message from '../components/Message.vue'
 import Login from '../components/Login.vue'
 import FinancialInformation from '../components/financeCpns/FinancialInformation.vue'
-import Home from '../components/Home.vue'
-import MyMain from '../components/My/MyMain.vue'
-
+import Home from '../components/home/Home.vue'
+import MyMain from '../components/my/MyMain.vue'
+import Setting from '../components/Setting.vue'
+import AccountOverview from '../components/AccountOverview.vue'
 
 
 const routes = [
@@ -21,8 +22,10 @@ const routes = [
   { path: '/message', component: Message},
   { path: '/login', component: Login},
   { path: '/financialInformation', component: FinancialInformation},
-  { path: '/mainMain', component: MyMain},
+  { path: '/myMain', component: MyMain},
   { path: '/home', component: Home},
+  { path: '/setting', component: Setting},
+  { path: '/accountOverview', component: AccountOverview},
 ]
 
 const router = createRouter({

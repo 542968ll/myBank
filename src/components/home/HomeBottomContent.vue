@@ -13,8 +13,8 @@
 </template>
 
 <script setup lang="ts">
-import { ref, reactive, toRefs, onMounted, type PropType } from 'vue'
-import type { homeBottomContentListType } from '../types/homeType'
+import { type PropType } from 'vue'
+import type { homeBottomContentListType } from '../../types/homeType'
 defineProps({
   homeBottomContentList: {
     type: Array as PropType<homeBottomContentListType[]>,

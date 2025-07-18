@@ -34,7 +34,7 @@
 <script setup lang="ts">
 import { ref, reactive, toRefs, onMounted } from 'vue'
 import { useRouter } from 'vue-router';
-import ProductItem from './financeCpns/ProductItem.vue';
+import ProductItem from './ProductItem.vue';
 
 const mt = ref<boolean>(true)
 const showRightArrow = ref<boolean>(true)

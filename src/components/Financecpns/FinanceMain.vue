@@ -1,5 +1,4 @@
 <template>
-  <button @click="toLifePage">跳转到生活页面</button>
   <Headers>
     <template #slot1>
       <div class=" flex flex-col justify-center items-center">

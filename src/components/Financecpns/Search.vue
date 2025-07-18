@@ -20,7 +20,7 @@
     <template #title>
       <div class="flex justify-between items-center">
         <span>{{ historySearchList.title }}</span>
-        <img src="../../assets/img/shanchu.svg" alt="" class="w-[30px] h-[30px]">
+        <img src="../../assets/img/shanchu.svg" alt="" class="w-[30px] h-[30px]" @click="delHistorySearch">
       </div>
     </template>
     <template #content>
@@ -65,10 +65,12 @@ const hotSearchList = ref<SearchType>({} as SearchType)
 const value1 = ref(0);
 const option1 = [
   { text: '全部', value: 0 },
-  { text: '功能', value: 1 },
-  { text: '产品', value: 2 },
+  { text: '首页', value: 1 },
+  { text: '我的', value: 2 },
   { text: '资讯', value: 3 },
-  { text: '常见问题', value: 4 },
+  { text: '理财', value: 4 },
+  { text: '生活', value: 5 },
+  { text: '常见问题', value: 6 },
 ];
 
 
@@ -84,25 +86,31 @@ onMounted(async () => {
    }
 })
 
-
 // 下拉框改变
 const valueChange = (e: number) => {
-  console.log("eeeeeeeeee", e);
-  if(e === 3) {
-    router.push('/FinancialInformation')
+  if(e === 1) {
+    router.push('/home')
+  } else if(e === 2) {
+    router.push('/myMain')
+  } else if(e === 3) {
+    router.push('/financialInformation')
+  } else if(e === 4) { // 理财
+    router.push('/financeMain')
+  } else if(e === 5) {
+    router.push('/lifeMain')
   }
 }
-
-
 
 const showSearch = computed(() => {
   return Object.prototype.toString.call(searchItem).slice(8, -1) !== '{}'
 })
 
-
-
 const cancelHandle = () => {
   router.go(-1)
+}
+
+const delHistorySearch = () => {
+  historySearchList.value.list = []
 }
 
 

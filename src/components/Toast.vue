@@ -36,14 +36,11 @@ const confrimHandle = async () => {
     username: username.value, 
     password: password.value
   })
-
-  console.log(res);
-
   if(res.code !== 200) {
     alert(res.data.message)
   } else {
     emit('changeShowToast', false)
-    router.replace('/financeMain')
+    router.replace('/home')
   }
 }
 

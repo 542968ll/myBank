@@ -1,7 +1,9 @@
 <template>
   <div 
     class="flex p-[10px] h-[30px] justify-between items-center bg-[#fff] border-b-[1px] border-b-[#f0f0f2]" 
-    :class="{'mt-[10px]': mt}"
+    :class="{
+      'mt-[10px]': mt,
+    }"
   >
     <slot name="title"></slot>
     <img v-if="!showRightArrow" src="@/assets/img/youjiantou.svg" class="h-[30px] w-[30px]" alt="">
